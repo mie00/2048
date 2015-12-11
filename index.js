@@ -1,19 +1,19 @@
 var LENGTH = 4
-var NUM_OF_INSERTS = [0,0,1,1,1,1,1,1,2]
-var INSERTED = [2,2,2,2,4,4]
+var NUM_OF_INSERTS = [1]
+var INSERTED = [2,2,2,2,2,2,2,2,2,4]
 
 var Util = {
-	range : function(a,b){
+	range: function(a,b){
 		if (b === undefined) {
 			b = a
 			a = 0
 		}
 		return Array.apply(null,{length:b-a}).map(function(x,y){return y+a})
 	},
-	zeros : function(n){
+	zeros: function(n){
 		return Array.apply(null,{length:n}).map(function(){return 0})
 	},
-	randInt : function(a,b){
+	randInt: function(a,b){
 		if (b === undefined) {
 			b = a
 			a = 0
@@ -21,14 +21,38 @@ var Util = {
 		var d = b-a
 		return Math.floor(Math.random() * d + a)
 	},
-	randChoice : function(arr){
-		return arr[	this.randInt(arr.length)]
+	randChoice: function(arr){
+		return arr[this.randInt(arr.length)]
 	},
-	copy : function copy(arr){
+	copy: function copy(arr){
 		if(!Array.isArray(arr)) return arr
 		return arr.map(copy)
 	},
-	sum : function(arr){
+	zip: function (arr1,arr2){
+		return arr1.map(function(x,y){
+			return [x,arr2[y]]
+		})
+	},
+	compare: function (arr1,arr2){
+		var self = this
+		if(!Array.isArray(arr1)) return arr1 == arr2
+		return this.all(this.zip(arr1,arr2).map(function(x){return self.compare(x[0],x[1])}))
+	},
+	all: function (arr){
+		for(var i in arr){
+			if(!arr[i])
+				return false
+		}
+		return true
+	},
+	any: function (arr){
+		for(var i in arr){
+			if(arr[i])
+				return true
+		}
+		return false
+	},
+	sum: function(arr){
 		return arr.reduce(function(x,y){return x+y},0)
 	},
 }
@@ -156,6 +180,7 @@ var Engine = function(){
 	var self = this
 	self.move = function(dir){
 		var steps = []
+		var prev = Util.copy(self.model.state)
 		if(! self.model.score){
 			for(var i = 0;i<LENGTH;i++){
 				self.model.rotate(dir)
@@ -163,7 +188,10 @@ var Engine = function(){
 				self.model.rotate(-dir)
 				steps.push(Util.copy(self.model.state))
 			}
-			self.model.random()
+			if(!Util.compare(prev,steps[steps.length-1])){
+				self.model.random()
+			}
+
 			steps.push(Util.copy(self.model.state))
 			self.model.finished()
 		}
@@ -175,6 +203,7 @@ var Engine = function(){
 	self.right = self.move.bind(self,2)
 	self.reset_model = function(){
 		self.model = new Model()
+		self.model.random()
 		return self.model.state
 	}
 }
