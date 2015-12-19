@@ -12,7 +12,7 @@ var Model = function(length){
 		// [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
 		// TODO
-		return [[0,0],[0,0]];
+		return [[1,2,3,4],[5,6,7,8],[5,6,7,8],[5,6,7,8]];
 	}
 
 	self.state = self.NewState(self.length)
