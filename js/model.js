@@ -11,7 +11,7 @@ var Model = function(length){
 		// > NewState(4)
 		// [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
-		// TODO
+		// TODO 3
 		return [[1,2,3,4],[5,6,7,8],[5,6,7,8],[5,6,7,8]];
 	}
 
@@ -23,7 +23,7 @@ var Model = function(length){
 		// > calc_score([[2, 2, 4], [2, 16, 4], [2, 8, 8]])
 		// 16
 
-		// TODO
+		// TODO 2
 		return 0;
 	}
 	self.is_finished = function(){
@@ -54,7 +54,7 @@ var Model = function(length){
 		// > solveable_row([2, 0, 8])
 		// true
 
-		// TODO
+		// TODO 4
 		return false;
 	}
 	self.compact = function(){
@@ -65,7 +65,7 @@ var Model = function(length){
 		// to each row in state
 		// and return the result as the same form
 
-		// TODO
+		// TODO 4
 		return state;
 	}
 	self.compacted_row = function(row){
@@ -79,7 +79,7 @@ var Model = function(length){
 		// > compacted_row([0, 2, 2])
 		// [4, 0, 0]
 
-		// TODO
+		// TODO 4
 		return row;
 	}
 	self.compact_once = function(){
@@ -90,7 +90,7 @@ var Model = function(length){
 		// to each row in state
 		// and return the result as the same form
 
-		// TODO
+		// TODO 4
 		return state;
 	}
 	self.compacted_row_once = function(row){
@@ -108,7 +108,7 @@ var Model = function(length){
 		// > compacted_row_once([2, 2, 0])
 		// [4, 0, 0]
 
-		// TODO
+		// TODO 5
 		return row;
 	}
 	self.rotate = function(dir){
@@ -144,7 +144,7 @@ var Model = function(length){
 		// > transform([1,2],[1,1])
 		// [0, 1]
 
-		// TODO
+		// TODO 3
 		return point;
 	}
 	self.rotate90_point_center = function(point){
@@ -155,7 +155,7 @@ var Model = function(length){
 		// > transform([1,0])
 		// [0, -1]
 
-		// TODO
+		// TODO 3
 		return point;
 	}
 	self.score = null
@@ -188,7 +188,7 @@ var Model = function(length){
 		// > calculate_zeros([[1, 0], [0, 1]])
 		// [[0,1], [1, 0]]
 
-		// TODO
+		// TODO 4
 		return [];
 	}
 }

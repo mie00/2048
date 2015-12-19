@@ -13,7 +13,7 @@ var Util = {
 		// > range(3)
 		// [0, 1, 2]
 
-		// TODO
+		// TODO 2
 		return [1,2,3];
 	},
 	zeros: function(n){
@@ -23,7 +23,7 @@ var Util = {
 		// zeros(3)
 		// [0, 0, 0]
 
-		// TODO
+		// TODO 1
 		return [4,5,6];
 	},
 	randInt: function(a,b){
@@ -35,14 +35,14 @@ var Util = {
 		// at also can take one argument (the second will be undefined)
 		// and it will consider the range starts from zero up to the given argument
 
-		// TODO
+		// TODO 3
 		return 3;
 	},
 	randChoice: function(arr){
 		// this function takes an array and give a random element
 		// it should use the previous function randInt
 
-		// TODO
+		// TODO 2
 		return 3;
 	},
 	copy: function copy(arr){
@@ -51,7 +51,7 @@ var Util = {
 		// separately.
 		// it should handle nested arrays
 
-		// TODO
+		// TODO 4
 		return arr;
 	},
 	zip: function (arr1,arr2){
@@ -59,7 +59,7 @@ var Util = {
 		// > zip([1, 2, 3], [4, 5, 6])
 		// [[1, 4], [2, 5], [3, 6]]
 
-		// TODO
+		// TODO 3
 		return [[2,3]];
 	},
 	is_equal: function (arr1,arr2){
@@ -79,7 +79,7 @@ var Util = {
 		// > is_equal([1, 1, [3, 4]], [1, 1, [3]])
 		// false
 
-		// TODO
+		// TODO 4
 		return false;
 	},
 	all: function (arr){
@@ -95,7 +95,7 @@ var Util = {
 		// > all([1, 2, "M", 3])
 		// true
 
-		// TODO
+		// TODO 3
 		return false;
 	},
 	any: function (arr){
@@ -109,7 +109,7 @@ var Util = {
 		// > any([1, 2, "", 3])
 		// true
 
-		// TODO
+		// TODO 3
 		return false;
 	},
 	sum: function(arr){
@@ -119,7 +119,7 @@ var Util = {
 		// > sum([])
 		// 0
 
-		// TODO
+		// TODO 1
 		return 1;
 	},
 }
