@@ -1,0 +1,58 @@
+*{
+	margin:0px;
+	padding:10px;
+}
+div{
+	padding:0px;
+}
+button{
+	width: 20px;
+	height: 20px;
+	padding:0;
+	margin:0;
+}
+.title>.right{
+    display: inline;
+	float:right;
+	margin-top: -10px;
+	margin-right: -10px;
+	padding-right: 0px;
+	width: 350px;
+	text-align: right;
+}
+.title>.right>*:not(.button){
+	margin-top: -10px;
+	padding-right: 10px;
+	float:right;
+}
+.title>.right>.success:not(.button){
+	width: 200px;
+}
+.title>.right>.error:not(.button){
+	width: 200px;
+}
+.button{
+	margin: 0;
+	border:1px solid gray;
+}
+.obj>*{
+	margin-left:10px;
+}
+.obj>*:nth-child(2n)>.title{
+	background-color: #f5f5f5;
+}
+.title{
+	border:1px solid gray;
+}
+.method>*{
+	margin-left:20px;
+}
+.cases>*{
+	margin-left:30px;
+}
+.success{
+	background-color: #dff0d8;
+}
+.error{
+	background-color: #f2dede;
+}
