@@ -8,7 +8,7 @@ var Util = {
 		// starting from the first upto but not including the second
 		// > range(1, 2)
 		// [1]
-		// > r range(0, 4)
+		// > range(0, 4)
 		// [0, 1, 2, 3]
 		// at also can take one integer (the second will be undefined)
 		// and it will generate an array of integers starting at 0
@@ -82,20 +82,20 @@ var Util = {
 		// > is_equal([1, 1, [3, 4]], [1, 1, [3]])
 		// false
 		var self = this
-		if(!Array.isArray(arr1)) return arr1 == arr2
+		if(!Array.isArray(arr1) || !Array.isArray(arr2)) return arr1 == arr2
 		return this.all(this.zip(arr1,arr2).map(function(x){return self.is_equal(x[0],x[1])}))
 	},
 	all: function (arr){
 		// this function takes an array and returns if all of its elements
 		// are true if treated as boolean
 		// you can check this using !!element
-		// > all(1, 2, 3)
+		// > all([1, 2, 3])
 		// true
-		// > all(0, 1, 2, 3)
+		// > all([0, 1, 2, 3])
 		// false
-		// > all(1, 2, '', 3)
+		// > all([1, 2, "", 3])
 		// false
-		// > all(1, 2, 'M', 3)
+		// > all([1, 2, "M", 3])
 		// true
 		for(var i in arr){
 			if(!arr[i])
@@ -107,11 +107,11 @@ var Util = {
 		// this function takes an array and returns if any of its elements
 		// is true if treated as boolean
 		// you can check this using !!element
-		// > any(1, 0, '')
+		// > any([1, 0, ""])
 		// true
-		// > any(0, '', false)
+		// > any([0, "", false])
 		// false
-		// > any(1, 2, '', 3)
+		// > any([1, 2, "", 3])
 		// true
 		for(var i in arr){
 			if(arr[i])
@@ -179,7 +179,7 @@ var Model = function(length){
 		// > solveable_row([2, 0, 8])
 		// true
 		var b = row.filter(function(x){return x})
-		if(b.length<self.length) return true;
+		if(b.length<row.length) return true;
 		for (var i in b){
 			if(b[+i+1] && b[i] === b[+i+1]){
 				return true
@@ -215,7 +215,7 @@ var Model = function(length){
 				b.splice(i+1,1)
 			}
 		}
-		return b.concat(Util.zeros(self.length - b.length))
+		return b.concat(Util.zeros(row.length - b.length))
 	}
 	self.compact_once = function(){
 		self.state = self.compacted_once(Util.copy(self.state))
@@ -254,10 +254,10 @@ var Model = function(length){
 				break
 			}
 		}
-		return b.concat(Util.zeros(self.length - b.length))
+		return b.concat(Util.zeros(row.length - b.length))
 	}
 	self.rotate = function(dir){
-		while(dir<0) dir+=self.length
+		while(dir<0) dir+=4
 		for (var i = 0;i<dir;i++){
 			self.rotate90()
 		}
@@ -338,7 +338,7 @@ var Model = function(length){
 		for (var i in state){
 			for (var j in state){
 				if(state[i][j] === 0){
-					zeros.push([i,j])
+					zeros.push([+i,+j])
 				}
 			}
 		}
@@ -401,7 +401,7 @@ var View = function(ctrl){
 	}
 	self.draw_state = function(state){
 		;[].slice.call(document.querySelectorAll('.place')).map(function(x,y){
-			var val = state[Math.floor(y/self.length)][y%self.length]
+			var val = state[Math.floor(y/state.length)][y%state.length]
 			x.innerHTML = val
 			x.setAttribute('val',val)
 		})
@@ -419,8 +419,8 @@ var View = function(ctrl){
 	self.invoke = function(action){
 		if(!self.finished){
 			var c = action()
-	    	self.draw(c[0])
-	    	if(c[1])self.score(c[1])
+			self.draw(c[0])
+			if(c[1])self.score(c[1])
 		}
 	}
 	var actions = [ctrl.left,ctrl.up,ctrl.right,ctrl.down]	
