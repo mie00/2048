@@ -1,6 +1,3 @@
-var NUM_OF_INSERTS = [1]
-var INSERTED = [2,2,2,2,2,2,2,2,2,4]
-
 var Util = {
 	range: function(a,b){
 		// this function is like python's range
@@ -130,6 +127,8 @@ var Util = {
 }
 
 var Model = function(length){
+	var NUM_OF_INSERTS = [1]
+	var INSERTED = [2,2,2,2,2,2,2,2,2,4]
 	var self = this
 	self.length = length
 	self.NewState = function(length){
