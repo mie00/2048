@@ -76,7 +76,7 @@ ErrorDet.prototype.draw = function() {
                     f++;
                     ft++;
                     ftt++;
-                    return '<p class="error">test failed'+((x.length==4)?': '+x[1]+' should return '+x[2]+' but returned '+x[3]:'')+'</p>'
+                    return '<p class="error">test failed'+((x.length==4)?': '+x[1]+' should return '+x[2]+' but returned '+JSON.stringify(x[3]):'')+'</p>'
                 }
             }).join('')
             document.getElementById(os+'.'+ms+'.stat').innerHTML = s+'/'+(s+f)+' succeeded'
