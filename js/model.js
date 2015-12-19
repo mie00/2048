@@ -10,7 +10,9 @@ var Model = function(length){
 		// [[0]]
 		// > NewState(4)
 		// [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-		return Util.zeros(length).map(function(x){return Util.zeros(length)})
+
+		// TODO
+		return [[0,0],[0,0]];
 	}
 
 	self.state = self.NewState(self.length)
@@ -20,7 +22,9 @@ var Model = function(length){
 		// it should use Math.max
 		// > calc_score([[2, 2, 4], [2, 16, 4], [2, 8, 8]])
 		// 16
-		return Math.max.apply(Math,state.map(Math.max.apply.bind(Math.max,Math)))
+
+		// TODO
+		return 0;
 	}
 	self.is_finished = function(){
 		var res = true
@@ -49,14 +53,9 @@ var Model = function(length){
 		// true
 		// > solveable_row([2, 0, 8])
 		// true
-		var b = row.filter(function(x){return x})
-		if(b.length<row.length) return true;
-		for (var i in b){
-			if(b[+i+1] && b[i] === b[+i+1]){
-				return true
-			}
-		}
-		return false
+
+		// TODO
+		return false;
 	}
 	self.compact = function(){
 		self.state = self.compacted(Util.copy(self.state))
@@ -65,9 +64,9 @@ var Model = function(length){
 		// this function should apply self.compacted_row
 		// to each row in state
 		// and return the result as the same form
-		return state.map(function(row){
-			return self.compacted_row(row)
-		})
+
+		// TODO
+		return state;
 	}
 	self.compacted_row = function(row){
 		// this function takes a row and return it compacted
@@ -79,14 +78,9 @@ var Model = function(length){
 		// [2, 4, 0]
 		// > compacted_row([0, 2, 2])
 		// [4, 0, 0]
-		var b = row.filter(function(x){return x})
-		for (var i in b){
-			if(b[+i+1] && b[i] === b[+i+1]){
-				b[i] = 2 * b[i]
-				b.splice(i+1,1)
-			}
-		}
-		return b.concat(Util.zeros(row.length - b.length))
+
+		// TODO
+		return row;
 	}
 	self.compact_once = function(){
 		self.state = self.compacted_once(Util.copy(self.state))
@@ -95,9 +89,9 @@ var Model = function(length){
 		// this function should apply self.compacted_row_once
 		// to each row in state
 		// and return the result as the same form
-		return state.map(function(row){
-			return self.compacted_row_once(row)
-		})
+
+		// TODO
+		return state;
 	}
 	self.compacted_row_once = function(row){
 		// this function takes a row and return it compacted once
@@ -113,19 +107,9 @@ var Model = function(length){
 		// [2, 2, 0]
 		// > compacted_row_once([2, 2, 0])
 		// [4, 0, 0]
-		var b = row.slice()
-		for (var i in b){
-			if(b[i] === 0){
-				b.splice(i,1)
-				break
-			}
-			else if(b[+i+1] && b[i] === b[+i+1]){
-				b[i] = 2 * b[i]
-				b.splice(+i+1,1)
-				break
-			}
-		}
-		return b.concat(Util.zeros(row.length - b.length))
+
+		// TODO
+		return row;
 	}
 	self.rotate = function(dir){
 		while(dir<0) dir+=4
@@ -159,11 +143,9 @@ var Model = function(length){
 		// at center argument
 		// > transform([1,2],[1,1])
 		// [0, 1]
-		x1 = point[0]
-		y1 = point[1]
-		x = center[0]
-		y = center[1]
-		return [x1-x,y1-y]
+
+		// TODO
+		return point;
 	}
 	self.rotate90_point_center = function(point){
 		// this function should take a point as an array of x,y dimentions
@@ -172,9 +154,9 @@ var Model = function(length){
 		// [2, -1]
 		// > transform([1,0])
 		// [0, -1]
-		x = point[0]
-		y = point[1]
-		return [y,-x]
+
+		// TODO
+		return point;
 	}
 	self.score = null
 	self.random = function(){
@@ -205,14 +187,8 @@ var Model = function(length){
 		// [[1, 0]]
 		// > calculate_zeros([[1, 0], [0, 1]])
 		// [[0,1], [1, 0]]
-		var zeros = []
-		for (var i in state){
-			for (var j in state){
-				if(state[i][j] === 0){
-					zeros.push([+i,+j])
-				}
-			}
-		}
-		return zeros
+
+		// TODO
+		return [];
 	}
 }
